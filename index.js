@@ -1,12 +1,24 @@
 import * as React from 'react';
-import {AppRegistry} from 'react-native';
+
+import {DefaultTheme, Provider as PaperProvider} from 'react-native-paper';
+
 import App from './src/App';
-import {Provider as PaperProvider} from 'react-native-paper';
+import {AppRegistry} from 'react-native';
 import {name as appName} from './app.json';
+
+const theme = {
+  ...DefaultTheme,
+  roundness: 2,
+  colors: {
+    ...DefaultTheme.colors,
+    primary: '#009688',
+    accent: '#03A9F4',
+  },
+};
 
 export default function Main() {
   return (
-    <PaperProvider>
+    <PaperProvider theme={theme}>
       <App />
     </PaperProvider>
   );
