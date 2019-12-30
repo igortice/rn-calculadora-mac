@@ -1,11 +1,16 @@
+import {Grid, Row} from 'react-native-easy-grid';
+
 import React from 'react';
-import {View, Text} from 'react-native';
+import {Text} from 'react-native-paper';
 
 const App = () => {
   return (
-    <View>
-      <Text>Oi</Text>
-    </View>
+    <Grid>
+      <Row size={4} style={{backgroundColor: 'gray'}} />
+      <Row size={96} style={{backgroundColor: 'green'}}>
+        <Text>oi</Text>
+      </Row>
+    </Grid>
   );
 };
 
