@@ -1,17 +1,12 @@
-import {Grid, Row} from 'react-native-easy-grid';
-
 import AppBar from './AppBar';
+import AppBody from './AppBody';
 import React from 'react';
-import {Text} from 'react-native-paper';
 
 const App = () => (
   <>
     <AppBar />
-    <Grid>
-      <Row>
-        <Text>oi</Text>
-      </Row>
-    </Grid>
+
+    <AppBody />
   </>
 );
 
