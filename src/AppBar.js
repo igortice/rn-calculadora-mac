@@ -1,13 +1,19 @@
-import * as React from 'react';
-
 import {Appbar} from 'react-native-paper';
+import React from 'react';
+import {StyleSheet} from 'react-native';
 
-export default class MyComponent extends React.Component {
-  render() {
-    return (
-      <Appbar.Header statusBarHeight={20}>
-        <Appbar.Content title="Calculadora Igor" />
-      </Appbar.Header>
-    );
-  }
-}
+const styles = StyleSheet.create({
+  contentTitle: {
+    fontSize: 20,
+    textAlign: 'center',
+    fontWeight: '500',
+  },
+});
+
+const AppBar = () => (
+  <Appbar.Header>
+    <Appbar.Content title={'CALCULADORA'} titleStyle={styles.contentTitle} />
+  </Appbar.Header>
+);
+
+export default AppBar;
