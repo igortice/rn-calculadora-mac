@@ -2,8 +2,8 @@ import {StyledRowVisor, StyledText} from './styled';
 
 import React from 'react';
 
-export default ({size}) => (
+export default ({size, textoVisor = '0'}) => (
   <StyledRowVisor size={size}>
-    <StyledText>-5</StyledText>
+    <StyledText>{textoVisor}</StyledText>
   </StyledRowVisor>
 );

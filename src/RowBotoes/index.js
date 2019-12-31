@@ -8,7 +8,7 @@ const cor1 = '#3F4248';
 const cor2 = '#59616B';
 const cor3 = '#FF9429';
 
-export default ({size}) => (
+export default ({size, onClickBotao}) => (
   <Row size={size}>
     <Grid>
       <StyledRow>
@@ -16,7 +16,7 @@ export default ({size}) => (
           <Button
             contentStyle={styles.buttonContent}
             labelStyle={styles.buttonLabel}
-            onPress={() => console.log('AC')}>
+            onPress={() => onClickBotao('AC')}>
             AC
           </Button>
         </StyledCol>
@@ -24,7 +24,7 @@ export default ({size}) => (
           <Button
             contentStyle={styles.buttonContent}
             labelStyle={styles.buttonLabel}
-            onPress={() => console.log('+-')}>
+            onPress={() => onClickBotao('+/-')}>
             &plusmn;
           </Button>
         </StyledCol>
@@ -32,7 +32,7 @@ export default ({size}) => (
           <Button
             contentStyle={styles.buttonContent}
             labelStyle={styles.buttonLabel}
-            onPress={() => console.log('%')}>
+            onPress={() => onClickBotao('%')}>
             %
           </Button>
         </StyledCol>
@@ -40,7 +40,7 @@ export default ({size}) => (
           <Button
             contentStyle={styles.buttonContent}
             labelStyle={styles.buttonLabel}
-            onPress={() => console.log('%')}>
+            onPress={() => onClickBotao('/')}>
             &divide;
           </Button>
         </StyledCol>
@@ -50,7 +50,7 @@ export default ({size}) => (
           <Button
             contentStyle={styles.buttonContent}
             labelStyle={styles.buttonLabel}
-            onPress={() => console.log('7')}>
+            onPress={() => onClickBotao(7)}>
             7
           </Button>
         </StyledCol>
@@ -58,7 +58,7 @@ export default ({size}) => (
           <Button
             contentStyle={styles.buttonContent}
             labelStyle={styles.buttonLabel}
-            onPress={() => console.log('8')}>
+            onPress={() => onClickBotao(8)}>
             8
           </Button>
         </StyledCol>
@@ -66,7 +66,7 @@ export default ({size}) => (
           <Button
             contentStyle={styles.buttonContent}
             labelStyle={styles.buttonLabel}
-            onPress={() => console.log('9')}>
+            onPress={() => onClickBotao(9)}>
             9
           </Button>
         </StyledCol>
@@ -74,7 +74,7 @@ export default ({size}) => (
           <Button
             contentStyle={styles.buttonContent}
             labelStyle={styles.buttonLabel}
-            onPress={() => console.log('x')}>
+            onPress={() => onClickBotao('*')}>
             &#215;
           </Button>
         </StyledCol>
@@ -84,7 +84,7 @@ export default ({size}) => (
           <Button
             contentStyle={styles.buttonContent}
             labelStyle={styles.buttonLabel}
-            onPress={() => console.log('4')}>
+            onPress={() => onClickBotao(4)}>
             4
           </Button>
         </StyledCol>
@@ -92,7 +92,7 @@ export default ({size}) => (
           <Button
             contentStyle={styles.buttonContent}
             labelStyle={styles.buttonLabel}
-            onPress={() => console.log('5')}>
+            onPress={() => onClickBotao(5)}>
             5
           </Button>
         </StyledCol>
@@ -100,7 +100,7 @@ export default ({size}) => (
           <Button
             contentStyle={styles.buttonContent}
             labelStyle={styles.buttonLabel}
-            onPress={() => console.log('6')}>
+            onPress={() => onClickBotao(6)}>
             6
           </Button>
         </StyledCol>
@@ -108,7 +108,7 @@ export default ({size}) => (
           <Button
             contentStyle={styles.buttonContent}
             labelStyle={styles.buttonLabel}
-            onPress={() => console.log('-')}>
+            onPress={() => onClickBotao('-')}>
             &#8722;
           </Button>
         </StyledCol>
@@ -126,7 +126,7 @@ export default ({size}) => (
           <Button
             contentStyle={styles.buttonContent}
             labelStyle={styles.buttonLabel}
-            onPress={() => console.log('2')}>
+            onPress={() => onClickBotao(2)}>
             2
           </Button>
         </StyledCol>
@@ -134,7 +134,7 @@ export default ({size}) => (
           <Button
             contentStyle={styles.buttonContent}
             labelStyle={styles.buttonLabel}
-            onPress={() => console.log('3')}>
+            onPress={() => onClickBotao(3)}>
             3
           </Button>
         </StyledCol>
@@ -142,7 +142,7 @@ export default ({size}) => (
           <Button
             contentStyle={styles.buttonContent}
             labelStyle={styles.buttonLabel}
-            onPress={() => console.log('+')}>
+            onPress={() => onClickBotao('+')}>
             +
           </Button>
         </StyledCol>
@@ -152,7 +152,7 @@ export default ({size}) => (
           <Button
             contentStyle={styles.buttonContent2}
             labelStyle={styles.buttonLabel}
-            onPress={() => console.log('0')}>
+            onPress={() => onClickBotao(0)}>
             0
           </Button>
         </StyledCol>
@@ -160,7 +160,7 @@ export default ({size}) => (
           <Button
             contentStyle={styles.buttonContent}
             labelStyle={styles.buttonLabel}
-            onPress={() => console.log(',')}>
+            onPress={() => onClickBotao(',')}>
             ,
           </Button>
         </StyledCol>
@@ -168,7 +168,7 @@ export default ({size}) => (
           <Button
             contentStyle={styles.buttonContent}
             labelStyle={styles.buttonLabel}
-            onPress={() => console.log('=')}>
+            onPress={() => onClickBotao('=')}>
             =
           </Button>
         </StyledCol>
