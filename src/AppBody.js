@@ -5,7 +5,8 @@ import RowVisor from './RowVisor';
 
 const defaultState = {
   valorVisor: 0.0,
-  elementosOperacao: {valor1: 0.0, operacao: null, valor2: 0.0},
+  primeiraParte: true,
+  elementosOperacao: {valor1: 0.0, operacao: '+', valor2: 0.0},
 };
 
 export default class AppBody extends Component {
@@ -16,6 +17,11 @@ export default class AppBody extends Component {
   };
 
   processarAcaoCalculadora(valor) {
+    let {
+      primeiraParte,
+      elementosOperacao: {valor1, valor2},
+    } = this.state;
+
     switch (valor) {
       // * LIMPAR TELA
       case 'AC':
@@ -38,7 +44,10 @@ export default class AppBody extends Component {
       case '*':
       case '/':
       case '%':
-        console.log(valor);
+        this.setState({
+          primeiraParte: false,
+          elementosOperacao: {...this.state.elementosOperacao, operacao: valor},
+        });
         break;
 
       // * PONTO FLUTUANTE
@@ -48,22 +57,36 @@ export default class AppBody extends Component {
 
       // * PROCESSAR RESULTADO
       case '=':
-        console.log(valor);
+        console.log(this.state);
         break;
 
       // * NÚMEROS DIGITADOS
       default:
-        let {valor1, operacao, valor2} = this.state.elementosOperacao;
         // * FORMAR VALOR 1
-        if (operacao == null) {
+        if (primeiraParte) {
           let valorBtnStr = valor.toString();
           let valorLocalStr = valor1 === 0.0 ? '' : valor1.toString();
           valor1 = parseFloat(valorLocalStr + valorBtnStr);
-          this.setState({elementosOperacao: {valor1}});
+          this.setState({
+            elementosOperacao: {
+              ...this.state.elementosOperacao,
+              valor1,
+            },
+          });
           this.setState({valorVisor: valor1});
         }
         // * FORMAR VALOR 2
         else {
+          let valorBtnStr = valor.toString();
+          let valorLocalStr = valor2 === 0.0 ? '' : valor2.toString();
+          valor2 = parseFloat(valorLocalStr + valorBtnStr);
+          this.setState({
+            elementosOperacao: {
+              ...this.state.elementosOperacao,
+              valor2,
+            },
+          });
+          this.setState({valorVisor: valor2});
         }
         break;
     }
