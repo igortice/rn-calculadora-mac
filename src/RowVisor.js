@@ -1,7 +1,7 @@
 import React from 'react';
 import {Row} from 'react-native-easy-grid';
 import {StyleSheet} from 'react-native';
-import {Text} from 'react-native';
+import {Text} from 'react-native-paper';
 
 const styles = StyleSheet.create({
   rowVisor: {
