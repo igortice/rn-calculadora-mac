@@ -1,15 +1,12 @@
-import {Grid, Row} from 'react-native-easy-grid';
-
 import React from 'react';
-import {Text} from 'react-native-paper';
+import RowBotoes from './RowBotoes';
+import RowVisor from './RowVisor';
 
 const AppBody = () => (
   <>
-    <Grid>
-      <Row>
-        <Text>oi</Text>
-      </Row>
-    </Grid>
+    <RowVisor size={15} />
+
+    <RowBotoes size={85} />
   </>
 );
 
