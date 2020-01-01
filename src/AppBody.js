@@ -5,7 +5,7 @@ import RowVisor from './RowVisor';
 
 const defaultState = {
   valorVisor: 0.0,
-  primeiraParte: true,
+  currentValor: 'valor1',
   elementosOperacao: {valor1: 0.0, operacao: '+', valor2: 0.0},
 };
 
@@ -17,10 +17,8 @@ export default class AppBody extends Component {
   };
 
   processarAcaoCalculadora(valor) {
-    let {
-      primeiraParte,
-      elementosOperacao: {valor1, valor2},
-    } = this.state;
+    let {valorVisor, currentValor} = this.state;
+    let currentValorLocal = this.state.elementosOperacao[currentValor];
 
     switch (valor) {
       // * LIMPAR TELA
@@ -30,11 +28,16 @@ export default class AppBody extends Component {
 
       // * TROCAR SINAL NÚMERO
       case '+/-':
-        let {valorVisor} = this.state;
         if (Number.isInteger(valorVisor)) {
           valorVisor *= -1;
 
-          this.setState({valorVisor});
+          this.setState({
+            valorVisor,
+            elementosOperacao: {
+              ...this.state.elementosOperacao,
+              [currentValor]: valorVisor,
+            },
+          });
         }
         break;
 
@@ -45,7 +48,7 @@ export default class AppBody extends Component {
       case '/':
       case '%':
         this.setState({
-          primeiraParte: false,
+          currentValor: 'valor2',
           elementosOperacao: {...this.state.elementosOperacao, operacao: valor},
         });
         break;
@@ -57,37 +60,21 @@ export default class AppBody extends Component {
 
       // * PROCESSAR RESULTADO
       case '=':
-        console.log(this.state);
         break;
 
       // * NÚMEROS DIGITADOS
       default:
-        // * FORMAR VALOR 1
-        if (primeiraParte) {
-          let valorBtnStr = valor.toString();
-          let valorLocalStr = valor1 === 0.0 ? '' : valor1.toString();
-          valor1 = parseFloat(valorLocalStr + valorBtnStr);
-          this.setState({
-            elementosOperacao: {
-              ...this.state.elementosOperacao,
-              valor1,
-            },
-          });
-          this.setState({valorVisor: valor1});
-        }
-        // * FORMAR VALOR 2
-        else {
-          let valorBtnStr = valor.toString();
-          let valorLocalStr = valor2 === 0.0 ? '' : valor2.toString();
-          valor2 = parseFloat(valorLocalStr + valorBtnStr);
-          this.setState({
-            elementosOperacao: {
-              ...this.state.elementosOperacao,
-              valor2,
-            },
-          });
-          this.setState({valorVisor: valor2});
-        }
+        let valorBtnStr = valor.toString();
+        let valorLocalStr =
+          currentValorLocal === 0.0 ? '' : currentValorLocal.toString();
+        valorVisor = parseFloat(valorLocalStr + valorBtnStr);
+        this.setState({
+          valorVisor,
+          elementosOperacao: {
+            ...this.state.elementosOperacao,
+            [currentValor]: valorVisor,
+          },
+        });
         break;
     }
   }
