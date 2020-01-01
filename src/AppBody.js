@@ -4,6 +4,7 @@ import RowBotoes from './RowBotoes';
 import RowVisor from './RowVisor';
 
 const defaultState = {
+  animation: null,
   valorVisor: 0.0,
   currentValor: 'valor1',
   elementosOperacao: {valor1: 0.0, operacao: '+', valor2: 0.0},
@@ -11,6 +12,20 @@ const defaultState = {
 
 export default class AppBody extends Component {
   state = defaultState;
+
+  componentDidUpdate(prevProps, prevState) {
+    const {animation} = this.state;
+
+    if (animation) {
+      this.turnOffRedTimeout = setTimeout(() => {
+        this.setState({animation: null});
+      }, 200);
+    }
+  }
+
+  componentWillUnmount() {
+    clearTimeout(this.turnOffRedTimeout);
+  }
 
   onClickBotao = valor => {
     this.processarAcaoCalculadora(valor);
@@ -48,6 +63,7 @@ export default class AppBody extends Component {
       case '/':
       case '%':
         this.setState({
+          animation: 'bounceIn',
           currentValor: 'valor2',
           elementosOperacao: {...this.state.elementosOperacao, operacao: valor},
         });
@@ -60,6 +76,7 @@ export default class AppBody extends Component {
 
       // * PROCESSAR RESULTADO
       case '=':
+        this.processarResultadoCalculadora();
         break;
 
       // * NÚMEROS DIGITADOS
@@ -81,12 +98,31 @@ export default class AppBody extends Component {
     }
   }
 
+  processarResultadoCalculadora() {
+    let {
+      valorVisor,
+      elementosOperacao: {valor1, operacao, valor2},
+    } = this.state;
+    const itensOperacao = [valor1, operacao, valor2];
+    const strOperacao = itensOperacao.join('');
+
+    // eslint-disable-next-line no-eval
+    valorVisor = parseFloat(eval(strOperacao));
+    this.setState({
+      valorVisor,
+      elementosOperacao: {
+        ...this.state.elementosOperacao,
+        valor1: valorVisor,
+      },
+    });
+  }
+
   render() {
-    const {valorVisor} = this.state;
+    const {valorVisor, animation} = this.state;
 
     return (
       <>
-        <RowVisor size={15} textoVisor={valorVisor} />
+        <RowVisor size={15} textoVisor={valorVisor} animation={animation} />
 
         <RowBotoes size={85} onClickBotao={this.onClickBotao} />
       </>

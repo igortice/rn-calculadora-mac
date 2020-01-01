@@ -1,9 +1,13 @@
+import * as Animatable from 'react-native-animatable';
+
 import {StyledRowVisor, StyledText} from './styled';
 
 import React from 'react';
 
-export default ({size, textoVisor = '0'}) => (
+export default ({size, textoVisor = '0', animation = ''}) => (
   <StyledRowVisor size={size}>
-    <StyledText>{textoVisor}</StyledText>
+    <Animatable.Text animation={animation}>
+      <StyledText>{textoVisor}</StyledText>
+    </Animatable.Text>
   </StyledRowVisor>
 );
