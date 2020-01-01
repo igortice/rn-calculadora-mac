@@ -18,7 +18,7 @@ export default class AppBody extends Component {
 
   processarAcaoCalculadora(valor) {
     let {valorVisor, currentValor} = this.state;
-    let currentValorLocal = this.state.elementosOperacao[currentValor];
+    let currentValorLocalValue = this.state.elementosOperacao[currentValor];
 
     switch (valor) {
       // * LIMPAR TELA
@@ -66,7 +66,9 @@ export default class AppBody extends Component {
       default:
         let valorBtnStr = valor.toString();
         let valorLocalStr =
-          currentValorLocal === 0.0 ? '' : currentValorLocal.toString();
+          currentValorLocalValue === 0.0
+            ? ''
+            : currentValorLocalValue.toString();
         valorVisor = parseFloat(valorLocalStr + valorBtnStr);
         this.setState({
           valorVisor,
