@@ -6,7 +6,7 @@ import styled from 'styled-components';
 
 export const styles = StyleSheet.create({
   buttonLabel: {
-    fontSize: 50,
+    fontSize: 35,
     color: '#fff',
   },
   buttonContent: {

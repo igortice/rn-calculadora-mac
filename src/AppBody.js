@@ -122,9 +122,9 @@ export default class AppBody extends Component {
 
     return (
       <>
-        <RowVisor size={15} textoVisor={valorVisor} animation={animation} />
+        <RowVisor size={25} textoVisor={valorVisor} animation={animation} />
 
-        <RowBotoes size={85} onClickBotao={this.onClickBotao} />
+        <RowBotoes size={75} onClickBotao={this.onClickBotao} />
       </>
     );
   }
